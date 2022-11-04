@@ -31,10 +31,10 @@ $(function () {
       hourCards[i].classList.add('future');
     }
   }
-
+//retrieving stored data
   var appointments = JSON.parse(localStorage.getItem('appointments')) ?? []
 
-
+//printing stored notes to page
   for(k= 0; k < appointments.length; k++) {
     var hourEl = document.getElementById(appointments[k].time);
     console.log('hi')
@@ -42,7 +42,7 @@ $(function () {
     hourTextArea.textContent = appointments[k].details;
   }
 
-
+//actual logic Local Storage
   function storeAppointment (){
     localStorage.setItem('appointments', JSON.stringify(appointments))
     alert('your appointment has been saved')
@@ -57,50 +57,16 @@ $(function () {
     var appointment = {
       details: appointmentDetails,
       time: appointmentTime,
-    }
-
+    };
+    //push new details into appointments array
     appointments.push(appointment);
     storeAppointment();
    
   }
-    //save array of appointments in storage 
-    // TODO: Add code to get any user input that was saved in localStorage and set the values of the corresponding textarea elements. HINT: How can the id attribute of each time-block be used to do this?
+  //iterate event listeners
     document.querySelectorAll('.row .saveBtn').forEach(item => {
       item.addEventListener('click', addAppointment)
     })
   
   });
-  
-  // dont understand theses but they make the printing work
-  
-  // function saveAppointment(appointments) {
-  //   localStorage.setItem('appointments', JSON.stringify(appointments))
-  // }
-  
-  //   //log in local storage
-  //   appointments.push(appointment);
-  //   saveAppointment(appointments);
-  // }
-  
-  // //reads projects from local storage 
-  //   function readAppointments() {
-    //     var appointments = localStorage.getItem('appointments');
-    //     if (appointments) {
-      //       appointments = JSON.parse(appointments);
-      //     } else {
-        //       appointments = []
-//     }
-//     return appointments;
-//   }
  
-  // function printAppointments () {
-  //   //clear current text
-  //   var textArea = hourCards.children[1] 
-  //   textArea.empty();
-  // //call local storage
-  //   var appointments = readAppointments();
-  //   for (var y = 0; y < appointments.length; y++){
-  //     if(appointment.time) {
-
-  //     }
-    // }
